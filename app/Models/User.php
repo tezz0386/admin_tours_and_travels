@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Blog\Blog;
+use App\Models\Admin\Category\Category;
+use App\Models\Admin\Destination\Destination;
+use App\Models\Admin\Package\Package;
+use App\Models\Admin\Package\PackageCategory;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,6 +28,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'contact_no',
+        'address',
+        'role',
     ];
 
     /**
@@ -43,9 +51,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-
-
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'created_by');
+    }
+    public function destinations()
+    {
+        return $this->hasMany(Destination::class, 'created_by');
+    }
+    public function packageCategories()
+    {
+        return $this->hasMany(PackageCategory::class, 'created_by');
+    }
+    public function packages()
+    {
+        return $this->hasMany(Package::class, 'created_by');
+    }
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'created_by');
+    }
     public function sluggable(): array
     {
         return [
