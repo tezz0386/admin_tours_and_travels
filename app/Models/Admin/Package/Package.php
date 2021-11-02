@@ -4,6 +4,7 @@ namespace App\Models\Admin\Package;
 
 use App\Models\Admin\Package\PackageCategory;
 use App\Models\Admin\Package\Thumbnail;
+use App\Models\Booking;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -57,6 +58,10 @@ class Package extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'package_id');
     }
 
 }

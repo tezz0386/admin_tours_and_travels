@@ -3,6 +3,7 @@
 namespace App\Models\Admin\Destination;
 
 use App\Models\Admin\Category\Category;
+use App\Models\Booking;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,5 +44,9 @@ class Destination extends Model
                 'source' => 'name'
             ]
         ];
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'destination_id');
     }
 }

@@ -29,27 +29,40 @@
 		<div class="row">
 			<!-- Contact Form -->
 			<div class="col-lg-8 offset-lg-2 col-12">
-				<form class="form" method="post" action="https://themelamp.com/themes/traveltrek-demo/mail/mail.php">
+				<form class="form" method="post" action="{{route('postMail')}}">
+					@csrf
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="form-group">
-								<input type="text" name="name" placeholder="Name" required="required">
+								<input type="text" name="name" placeholder="Name" required="required" value="{{old('name')}}">
 							</div>
+							@error('name')
+							<span class="alert alert-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="col-lg-6 col-md-6 col-12">
 							<div class="form-group">
-								<input type="email" name="email" placeholder="Email" required="required">
+								<input type="email" name="email" placeholder="Email" required="required" value="{{old('email')}}">
 							</div>
+							@error('email')
+							<span class="alert alert-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="col-12">
 							<div class="form-group">
-								<input type="text" name="subject" placeholder="Subject" required="required">
+								<input type="text" name="subject" placeholder="Subject" required="required" value="{{old('subject')}}">
 							</div>
+							@error('subject')
+							<span class="alert alert-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<textarea name="message" rows="8" placeholder="Your Message"></textarea>
+								<textarea name="message" rows="8" placeholder="Your Message">{{old('message')}}</textarea>
 							</div>
+							@error('message')
+							<span class="alert alert-danger">{{$message}}</span>
+							@enderror
 						</div>
 						<div class="col-md-12">
 							<div class="form-group button">

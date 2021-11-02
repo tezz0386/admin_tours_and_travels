@@ -3244,7 +3244,12 @@ Version:	1.0
  /*======================================
   New Codes
  ========================================*/
-
+.fa-star {
+    font-family: 'FontAwesome';
+    font-style: initial;
+    color: #ff5050;
+    margin: 0 3px;
+}
 .slider-item {
     width: 100%;
     display: flex;
@@ -3253,4 +3258,89 @@ Version:	1.0
 .contact-page-contact img {
     width: 42px;
     height: auto;
+}
+.des-hover {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-top: -38 px;
+    z-index: 4;
+    margin-top: -38px;
+}
+.single-destination-main {
+    position: relative;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon-star {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon-star {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon-star,
+.rating:hover label:hover input ~ .icon {
+  color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon-star:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+.team-rate {
+    color: #5d0000;
+    text-decoration: underline;
 }

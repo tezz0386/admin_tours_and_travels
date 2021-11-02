@@ -22,16 +22,17 @@
 					<!-- Trip Gallery -->
 					<div class="trip-gallery">
 						<div class="gallery-slider owl-carousel owl-theme owl-loaded">
-							<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3750px, 0px, 0px); transition: all 0s ease 0s; width: 5250px;"><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('uploads/package/thumbnail/'.$package->thumbnail)}}" alt="#"></div></div><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img3.jpg')}}" alt="#"></div></div><div class="owl-item" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img1.jpg')}}" alt="#"></div></div><div class="owl-item" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img2.jpg')}}" alt="#"></div></div><div class="owl-item animated owl-animated-out fadeOut" style="width: 750px; margin-right: 0px; left: 750px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img3.jpg')}}" alt="#"></div></div><div class="owl-item cloned animated owl-animated-in fadeIn active" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img1.jpg')}}" alt="#"></div></div><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img2.jpg')}}" alt="#"></div></div></div>
+							<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3750px, 0px, 0px); transition: all 0s ease 0s; width: 5250px;"><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('uploads/destination/thumbnail/'.$destination->image)}}" alt="#"></div></div><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img3.jpg')}}" alt="#"></div></div><div class="owl-item" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img1.jpg')}}" alt="#"></div></div><div class="owl-item" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img2.jpg')}}" alt="#"></div></div><div class="owl-item animated owl-animated-out fadeOut" style="width: 750px; margin-right: 0px; left: 750px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img3.jpg')}}" alt="#"></div></div><div class="owl-item cloned animated owl-animated-in fadeIn active" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img1.jpg')}}" alt="#"></div></div><div class="owl-item cloned" style="width: 750px; margin-right: 0px;"><div class="single-slider"><img src="{{asset('frontend/images/gallery-img2.jpg')}}" alt="#"></div></div></div>
 							</div><div class="owl-controls"><div class="owl-nav"><div class="owl-prev" style=""><i class="fa fa-angle-left" aria-hidden="true"></i></div><div class="owl-next" style=""><i class="fa fa-angle-right" aria-hidden="true"></i></div></div><div class="owl-dots" style="display: none;"></div></div></div>
 						</div>
 						<!--/ End Trip Gallery -->
 						<div class="trip-content">
 							<div class="trip-head">
-								<h2>{{$package->name}}</h2>
+								<h2>{{$destination->name}}</h2>
+								<h4>{{$package->name}}</h4>
 								<p>From <span class="price">${{$package->start_from / $package->duration_nights}}.00</span><span> / Night</span></p>
 							</div>
-							<p>{{$package->summary}}</p>
+							<p>{{$destination->summary}}</p>
 						</div>
 						<div class="trip-tab">
 							<div class="trip-tab-inner">
@@ -79,11 +80,11 @@
 							<form class="form">
 								<div class="form-group date">
 									<h4>Arrival Date</h4>
-									<input type="date" name="arrival" id="arrival">
+									<input type="date" name="arrival" id="arrival" value="{{$arrival}}">
 								</div>
 								<div class="form-group date">
 									<h4>Departure Date</h4>
-									<input type="date" name="departure" id="departure" readonly="readonly">
+									<input type="date" name="departure" id="departure" readonly="readonly" value="{{$departure}}">
 								</div>
 								<div class="form-group">
 									<div class="row">
@@ -139,7 +140,7 @@
 								<!-- single list -->
 								<div class="single-list">
 									<div class="left">Departure:</div>
-									<div class="right" id="departure_date"></div>
+									<div class="right" id="departure_date">{{$departure}}</div>
 								</div>
 								<!--/ End single list -->
 								<label><input type="checkbox" name="clear" id="agree"> Agree</label>
@@ -152,6 +153,7 @@
 										<input type="" name="charge" id="formCharge" hidden="hidden">
 										<input type="" name="arrival" id="formArrival" hidden="hidden">
 										<input type="" name="departure" id="formDeparture" hidden="hidden">
+										<input type="text" name="destination_id" id="formDestination" value="{{$destination->id}}" hidden="hidden">
 										<button disabled id="book-trip" class="btn">Book Now</button>
 									</form>
 								</div>

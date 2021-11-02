@@ -5,78 +5,46 @@
 	@include('frontend.partials.slider')
 	<!--/ End Slider Area -->
 	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Trip Search -->
-				<div class="trip-search">
-					<form class="form">
-						<h2><span>Find your trip</span></h2>
-						<!-- Single Form -->
-						<div class="form-group">
-							<h4>Destination</h4>
-							<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{asset('frontend/images/destination-icon.png')}}" alt="#">Where to Go</span>
-							<ul class="list">
-								<li data-value="1" class="option selected ">Destination One</li>
-								<li data-value="2" class="option">Destination Two</li>
-								<li data-value="3" class="option">Destination Three</li>
-							</ul>
-						</div>
-					</div>
-					<!--/ End Single Form -->
-					<!-- Single Form -->
-					<div class="form-group">
-						<h4>Activities</h4>
-						<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{asset('frontend/images/activities-icon.png')}}" alt="#">What to do</span>
-						<ul class="list">
-							<li data-value="1" class="option selected ">Activities One</li>
-							<li data-value="2" class="option">Activities Two</li>
-							<li data-value="3" class="option">Activities Three</li>
-						</ul>
-					</div>
-				</div>
-				<!--/ End Single Form -->
-				<!-- Single Form -->
-				<div class="form-group duration">
-					<h4>Duration</h4>
-					<div class="nice-select form-control wide" tabindex="0"><span class="current"><img src="{{asset('frontend/images/duration-icon.png')}}" alt="#">When to go</span>
-					<ul class="list">
-						<li data-value="1" class="option selected ">Duration One</li>
-						<li data-value="2" class="option">Duration Two</li>
-						<li data-value="3" class="option">Duration Three</li>
-					</ul>
-				</div>
-			</div>
-			<!--/ End Single Form -->
-			<!-- Single Form -->
-			<div class="form-group range">
-				<h4>Budget</h4>
-				<div class="price-filter">
-					<div class="price-filter-inner">
-						<div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%;"></div><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 100%;"></span></div>
-						<div class="price_slider_amount">
-							<div class="label-input">
-								<input type="text" id="amount" name="price" placeholder="Add Your Price">
+			<div class="row">
+				<div class="col-12">
+					<div class="trip-search">
+						<form class="form" method="get" id="trip-form">
+							<h2><span>Book your trip</span></h2>
+							<div class="form-group">
+								<h4>Destination</h4>
+								<select class="form-control" name="destination">
+									<option value="">Where to Go</option>
+									@if(isset($allDestinations) && count($allDestinations)>0)
+									@foreach($allDestinations as $destination)
+									<option value="{{$destination->id}}">{{$destination->name}}</option>
+									@endforeach
+									@endif
+								</select>
 							</div>
-						</div>
+							<div class="form-group">
+								<h4>Activities</h4>
+								<select class="form-control" name="package" id="package">
+									<option value="">what to do</option>
+									@if(isset($packages) && count($packages)>0)
+									@foreach($packages as $package)
+									<option value="{{$package->slug}}">{{$package->name}}</option>
+									@endforeach
+									@endif
+								</select>
+							</div>
+							<div class="form-group" id="duration-div">
+								<h4>Duration</h4>
+								<input type="date" name="arrival" class="form-control">
+							</div>
+							<div class="form-group button">
+								<button type="submit" class="btn">Book a Trip</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-			<!--/ End Single Form -->
-			<!-- Form Button -->
-			<div class="form-group button">
-				<button type="submit" class="btn">Search Trip</button>
-			</div>
-			<!--/ End Form Button -->
-		</form>
-	</div>
-	<!--/ End Trip Search -->
-</div>
-</div>
-</div>
+		</div>
 </section>
-<!--/ End Hero Area -->
-
-<!-- About Us -->
 <section id="about-us" class="about-us section">
 <div class="container">
 <div class="row">
@@ -129,8 +97,6 @@
 </div>
 </section>
 <!--/ End Main Area -->
-
-
 @if(isset($destinations) && count($destinations)>0)
 <!-- Popular Destination -->
 <section id="p-destination" class="p-destination section">
@@ -171,8 +137,6 @@
 </section>
 <!--/ End Popular Destination -->
 @endif
-
-
 @if(isset($packages) && count($packages)>0)
 <!-- Popular Trips -->
 <section id="popular-trips" class="popular-trips section overlay" style="background-image:url({{asset('frontend/images/popular-bg.jpg')}});">
@@ -220,10 +184,8 @@
 </div>
 </div>
 </section>
-
 @endif
 <!--/ End Popular Trips -->
-
 <!-- Top Destination -->
 <section id="top-destination" class="top-destination section">
 <div class="container">
@@ -247,10 +209,8 @@
 			<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab2{{$category->id}}" role="tab">{{$category->name}}</a></li>
 			@endforeach
 			@endif
-
 		</ul>
 		<!--/ End Nav Tab -->
-
 		<div class="tab-content" id="myTabContent">
 			<!-- Tab 1 -->
 			<div class="tab-pane fade show active" id="t-tab1" role="tabpanel">
@@ -283,7 +243,6 @@
 					@endforeach
 				</div>
 			</div>
-
 			<!--/ End Tab 1 -->
 			<!-- Tab 2 -->
 			@foreach($packageWithCategory as $category)
@@ -318,7 +277,6 @@
 			@endforeach
 			<!--/ End Tab 2 -->
 		</div>
-
 	</div>
 	<!--/ End Destination Tab -->
 </div>
@@ -326,7 +284,6 @@
 </div>
 </section>
 <!--/ End Top Destination -->
-
 <!-- Call To Action -->
 <section id="cta" class="cta section" style="background-image: url({{asset('frontend/images/cta-bg.jpg')}});">
 <div class="container">
@@ -344,7 +301,6 @@
 </div>
 </section>
 <!--/ End Call To Action -->
-
 <!-- Testimonials -->
 <section id="testimonials" class="testimonials section">
 <div class="container">
@@ -388,16 +344,10 @@
 </div>
 </section>
 <!--/ End Testimonials -->
-
 <!-- Services -->
-
 <!--/ End Services -->
-
 <!-- Blog Area -->
-
 <!--/ End Blog Area -->
-
-
 @if(isset($members) && count($members)>0)
 <!-- Clients -->
 <section id="team" class="team section">
@@ -412,6 +362,32 @@
 </div>
 <div class="row">
 @foreach($members as $member)
+
+
+
+<!-- php section for rate -->
+			@php
+			$rate = 0;
+			$count=null;
+			@endphp
+			@if(count($member->ratting)>0)
+			@foreach($member->ratting as $ratting)
+			 @php
+			   $rate +=$ratting->rate;
+			 @endphp 
+			@endforeach
+			@php
+			$rate=$rate/count($member->ratting);
+			$rate = (int)$rate;
+			$count =5-$rate;
+			$count = (int)$count;
+			@endphp
+			@else
+			@php
+			  $count=5;
+			@endphp
+			@endif
+<!-- end php section for rate -->
 <div class="col-lg-4 col-md-6 col-12">
 	<!-- Single Team -->
 	<div class="single-team">
@@ -427,7 +403,14 @@
 		</div>
 		<!-- Team Bottom -->
 		<div class="t-bottom">
-			<h2><span>{{$member->designation}}</span>{{$member->name}}</h2>
+			<h2><span>{{$member->designation}}</span> </h2>
+						@for($i=1; $i<=$rate; $i++)
+						<i class="fas fa-star"></i>
+						@endfor
+						@for($j=1; $j<=$count; $j++)
+						<i class="fas fa-star" style="color: black;"></i>
+						@endfor
+			<h2 class="mb-3"><a href="{{route('getSingleMember', $member->slug)}}">{{$member->name}}</a></h2>
 			<p>{{$member->summary}}</p>
 		</div>
 		<!--/ End Team Bottom -->
@@ -444,3 +427,16 @@
 @section('meta_keywords', $setting->meta_keywords)
 @section('meta_description', $setting->meta_tag)
 @section('title', $setting->title_tag)
+
+@push('js')
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		var route = "{!!route('getSinglePackage')!!}";
+  		var url='';
+  		$('#package').on('change', function(){
+  			url = route+'/'+$(this).val();
+  			$('#trip-form').attr('action', url);
+  		});
+  	});
+  </script>
+@endpush

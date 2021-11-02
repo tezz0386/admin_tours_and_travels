@@ -119,17 +119,17 @@
                                 <ul class="nav menu">
                                     <li class="@if(isset($page) && $page=='home') active @endif"><a href="{{route('index')}}">Home</a></li>
                                     <li class="@if(isset($page) && $page=='blog') active @endif"><a href="{{route('getBlog')}}">Blog</a></li>
-                                    <li><a href="#">Destinations <i class="fa fa-angle-down"></i></a>
+                                    <li class="@if(isset($page) && $page=='destination') active @endif"><a href="#">Destinations <i class="fa fa-angle-down"></i></a>
                                         @if(count($navCategories)>0)
                                         <ul class="dropdown">
                                             @foreach($navCategories as $category)
-                                            <li><a href="destinations.html">{{$category->name}}</a></li>
+                                            <li><a href="{{route('getDestination', $category->slug)}}">{{$category->name}}</a></li>
                                             @endforeach
                                         </ul>
                                         @endif
                                     </li>
                                     <li class="@if(isset($page) && $page=='about') active @endif"><a href="{{route('getAbout')}}">About</a></li>
-                                    <li class="@if(isset($page) && $page=='booking') active @endif"><a href="#">Booking</a></li>
+                                    <li class="@if(isset($page) && $page=='booking') active @endif"><a href="{{route('getPackages')}}">Booking</a></li>
                                     <li class="@if(isset($page) && $page=='contact') active @endif"><a href="{{route('getContact')}}">Contact Us</a></li>
                                     <li class="@if(isset($page) && $page=='faq') active @endif"><a href="{{route('getFAQ')}}">Faq</a></li>
                                 </ul>
@@ -254,6 +254,7 @@
     <script src="{{asset('frontend/js/gmap.min.js')}}"></script>
     <!-- Active JS -->
     <script src="{{asset('frontend/js/active.js')}}"></script>
+    @stack('js')
 </body>
 
 <!-- Mirrored from themelamp.com/themes/traveltrek-demo/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 Sep 2021 05:00:00 GMT -->

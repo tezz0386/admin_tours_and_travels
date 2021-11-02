@@ -267,6 +267,29 @@
                   </li>
                 </ul>
               </li>
+               <li class="nav-item @if(isset($page)) @if($page == 'activity') menu-is-opening menu-open @endif @endif">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tree"></i>
+                  <p>
+                   Activity
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('activity.create')}}" class="nav-link @if($activePage== 'activity_create') active @endif">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Create</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('activity.index')}}" class="nav-link @if($activePage== 'activity_list') active @endif">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>List</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="nav-item @if(isset($page)) @if($page == 'package_category') menu-is-opening menu-open @endif @endif">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-tree"></i>
@@ -477,6 +500,8 @@
             <script src="{{asset('dashboard/dist/js/demo.js')}}"></script>
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{asset('dashboard/dist/js/pages/dashboard.js')}}"></script>
+            <!-- <script src="{{asset('dashboard/js/demo/chart-area-demo.js')}}"></script> -->
+            <script src="{{asset('dashboard/js/demo/chart-pie-demo.js')}}"></script>
             <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
             <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
             <script src="{{asset('ckeditor/build/ckeditor.js')}}"></script>

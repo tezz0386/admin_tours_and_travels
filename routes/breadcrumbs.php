@@ -201,9 +201,28 @@ Breadcrumbs::for('faq.create', function(BreadcrumbTrail $trail){
 	$trail->push('Create', route('faq.create'));
 });
 
+Breadcrumbs::for('activity.index', function(BreadcrumbTrail $trail){
+	$trail->parent('dashboard');
+	$trail->push('Activity List', route('activity.index'));
+});
+Breadcrumbs::for('activity.edit', function(BreadcrumbTrail $trail, $activity){
+	$trail->parent('activity.index');
+	$trail->push($activity->slug, route('activity.edit', $activity));
+});
+Breadcrumbs::for('activity.create', function(BreadcrumbTrail $trail){
+	$trail->parent('activity.index');
+	$trail->push('Create', route('activity.create'));
+});
+
 Breadcrumbs::for('faq.edit', function(BreadcrumbTrail $trail, $faq){
 	$trail->parent('faq.index');
 	$trail->push($faq->question, route('faq.edit', $faq));
+});
+
+
+Breadcrumbs::for('getTest', function(BreadcrumbTrail $trail){
+	$trail->parent('dashboard');
+	$trail->push(route('getTest'));
 });
 
 

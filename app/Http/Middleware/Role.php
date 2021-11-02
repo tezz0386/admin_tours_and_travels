@@ -14,8 +14,11 @@ class Role
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $role)
     {
-        return $next($request);
+        if($request->user()->role == $role){
+            return $next($request);
+        }
+        abort(403, 'Un authorized access');
     }
 }

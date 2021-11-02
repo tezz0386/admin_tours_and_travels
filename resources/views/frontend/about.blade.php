@@ -7,7 +7,6 @@
 			<div class="col-12">
 				<ul class="list">
 					<li><a href="{{route('index')}}">Home</a></li>
-					<!-- <li><a href="#">Pages</a></li> -->
 					<li><a href="{{route('getAbout')}}">About Us</a></li>
 				</ul>
 				<h2>About Us</h2>
@@ -85,7 +84,7 @@
 						<h2>Worthy time spent<span>around the world.</span></h2>
 					</div>
 					<p>The average employee is wasting between 50%-80% of their day on non-work related distractions. Time wasted is money wasted, thats money that could stay in your pocket simply by changing the way you assign your tasks.</p>
-					<a href="#" class="btn">Book your trip</a>
+					<a href="{{route('getPackages')}}" class="btn">Book your trip</a>
 				</div>
 				<!-- End CTA Text -->
 			</div>

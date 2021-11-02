@@ -1,34 +1,27 @@
 <?php
 
-namespace App\Models\Admin\Member;
+namespace App\Models\Admin\Activity;
 
-use App\Models\Admin\Ratting\Ratting;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Member extends Model
+class Activity extends Model
 {
     use HasFactory;
     use SoftDeletes;
     use Sluggable;
     protected $fillable=[
-        'created_by',
     	'name',
-    	'address',
-    	'contact_no',
-    	'email',
-    	'facebook_link',
-    	'twitter_link',
-    	'designation',
+        'slug',
     	'summary',
+    	'created_by',
     	'description',
-    	'review',
-    	'slug',
-        'image',
+    	'title_tag',
+    	'meta_keywords',
+    	'meta_description',
     ];
-
     public function sluggable(): array
     {
         return [
@@ -37,10 +30,4 @@ class Member extends Model
             ]
         ];
     }
-
-    public function ratting()
-    {
-        return $this->hasMany(Ratting::class, 'member_id');
-    }
-
 }
